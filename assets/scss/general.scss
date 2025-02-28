@@ -1,0 +1,43 @@
+@use "utils/vars.scss" as *;
+
+
+// CSS Reset
+
+* { box-sizing: border-box; }
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    margin: 0;
+}
+
+button {
+    border: inherit;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+section {
+    padding: var(--sec-p-x) var(--sec-sp-y);
+
+    &:first-of-type {
+        padding-top: calc(var(--sec-p-x) + (var(--btn-round-size) + (var(--sp-sm) * 2)));
+    }
+}
+
+// Backgorunds
+@each $color-name, $hex in $bg-colors {
+    .bg-#{"#{$color-name}"} {
+        background-color: $hex;
+    }
+}

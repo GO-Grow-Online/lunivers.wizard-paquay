@@ -1,0 +1,18 @@
+$primary : #30643f;
+$secondary : #d17d38;
+
+$bp-sm : 320px;
+$bp-md : 550px;
+$bp-lg : 1000px;
+
+$light : #ececec;
+
+$dark : #000000;
+$white : #fff;
+$text : $dark;
+
+$bg-colors: (
+  light: $light,
+  white: $white,
+  primary: $primary,
+);

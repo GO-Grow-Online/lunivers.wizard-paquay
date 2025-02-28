@@ -1,0 +1,78 @@
+@use "../utils/vars.scss" as *;
+
+.categories {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+
+    h1 {
+        margin-left: var(--sp-md);
+        margin-right: var(--sp-md);
+        text-align: center;
+        color: $whiter;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+
+        background-color: $primary;
+    }
+
+    &-list {
+
+        position: relative;
+        z-index: 1;
+
+        width: 100%;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+
+        display: flex;
+        flex-direction: row;
+        gap: var(--sp-md);
+
+        &-item {
+
+            scroll-snap-align: center;
+            
+            width: 100vw;
+            aspect-ratio: 10/ 9;
+
+            &:first-child a { margin-left: var(--sp-md); }
+            &:last-child a { margin-right: var(--sp-md); }
+
+            a {
+                position: relative;
+                overflow: hidden;
+                display: block;
+
+                border-radius: var(--btn-radius);
+    
+                width: calc(100vw - var(--sp-md) * 2);
+                height: 100%;
+
+    
+                p {
+                    text-align: right;
+                    width: 100%;
+                }
+    
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                }
+            }
+        }
+
+    }
+}

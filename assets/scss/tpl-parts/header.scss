@@ -1,0 +1,46 @@
+@use "../utils/vars.scss" as *;
+
+.header {
+
+    &-top, &-bottom {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        color: $primary;
+    } 
+
+    &-top {
+        top: 0;
+
+        padding: var(--sp-sm) var(--sp-md);
+        background-color: $white;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-cta {
+            display: flex;
+            align-items: center;
+
+            p {
+                display: none;
+                
+            }
+        }
+    }
+
+    &-bottom {
+        bottom: 0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: var(--sp-md);
+    }
+}
+
+@media (min-width : $bp-lg) {
+
+}
