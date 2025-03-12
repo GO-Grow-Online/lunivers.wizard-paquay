@@ -4,10 +4,14 @@
     position: relative;
     overflow: hidden;
     width: 100vw;
+    
+    padding: 0;
 
     h1 {
         margin-left: var(--sp-md);
         margin-right: var(--sp-md);
+        margin-top: var(--sp-lg);
+        margin-bottom: calc(var(--sp-lg) * 1.5);
         text-align: center;
         color: $white;
     }
@@ -40,9 +44,11 @@
         &-item {
 
             scroll-snap-align: center;
+
+            display: flex;
             
-            width: 100vw;
-            aspect-ratio: 10/ 9;
+            width: 85vw;
+            aspect-ratio: 10/ 7;
 
             &:first-child a { margin-left: var(--sp-md); }
             &:last-child a { margin-right: var(--sp-md); }
@@ -50,17 +56,25 @@
             a {
                 position: relative;
                 overflow: hidden;
-                display: block;
 
                 border-radius: var(--btn-radius);
     
-                width: calc(100vw - var(--sp-md) * 2);
+                width: 60vw;
                 height: 100%;
 
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+
+                padding: var(--sp-md);
     
                 p {
+                    margin-bottom: -8px;
                     text-align: right;
                     width: 100%;
+                    font-size: 22px;
+                    color: $white;
+                    font-weight: 800;
                 }
     
                 img {
@@ -70,6 +84,33 @@
                     width: 100%;
                     height: 100%;
                     z-index: -1;
+                    object-fit: cover;
+                    z-index: -2;
+                }
+
+                &::before, &::after {
+                    content: "";
+                    position: absolute;
+                }
+
+                // Filigrane
+                &::before {
+                    inset: 0;
+                    background: linear-gradient(to top, #000 0%, #00000000 30%, #00000000 100%);
+                    z-index: -1;
+                } 
+
+                // Radio circle
+                &::after {
+                    bottom: var(--sp-md);
+                    left: var(--sp-md);
+                    width: var(--fs-base);
+                    height: var(--fs-base);
+
+                    background-color: transparent;
+                    border: 1px solid $white;
+
+                    border-radius: $round;
                 }
             }
         }

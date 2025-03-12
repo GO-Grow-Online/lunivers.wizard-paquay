@@ -1,3 +1,5 @@
+@use "../utils/vars.scss" as *;
+
 :root {
     --icon-size : 2rem;
     --people-pic : 5rem;
@@ -6,12 +8,30 @@
     --btn-round-size : 3rem;
     --btn-p-x : 1.25rem;
     --btn-p-y : 1rem;
-    --btn-radius : 10px;
+    --btn-radius : 7px;
+    --btn-border-width : 2px;
 
     --sp-sm : 0.5rem;
     --sp-md : 1rem;
-    --sp-lg : 1.5rem;
+    --sp-lg : 1.75rem;
 
-    --sec-p-x : 2rem;
+    --sec-p-x : 1.5rem;
     --sec-p-y : 4rem;
+
+    --fs-base : 15px;
+    --fs-h1 : 18px;
+    --fs-h2 : 18px;
+    --fs-h3 : 15px;
+
+    --radius : 15px;
+
+    --header-height : 64px;
+}
+
+@media (min-width : $bp-md) {
+
+}
+
+@media (min-width : $bp-lg) {
+    
 }

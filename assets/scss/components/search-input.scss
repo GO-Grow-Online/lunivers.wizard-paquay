@@ -1,0 +1,81 @@
+@use "../utils/vars.scss" as *;
+
+// Search section
+
+.search {
+
+    h2 {
+        text-align: center;
+        margin-bottom: var(--sp-lg);
+    }
+
+    .input--search {
+
+        gap: calc(var(--btn-p-x) * 0.5);
+
+        svg { transition: color $fast $bezier; }
+
+        input {
+            width: 100%;
+            outline: none!important;
+        }
+
+        &:has(input:focus) svg {
+            color: $primary;
+        }
+    }
+
+    &-results {
+        display: flex;
+        flex-direction: row;
+        gap: var(--sp-md);
+
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+
+        margin-left: calc(var(--sec-p-x) * -1);
+        padding-right: var(--sec-p-x);
+        padding-left: var(--sec-p-x);
+        width: 100vw;
+
+        &-item {
+            scroll-snap-align: center;
+
+            display: block;
+            width: 33vw;
+            height: 33vw;
+            aspect-ratio: 1/1;
+            background-color: $secondary;
+        }
+    }
+
+    &-wrapper {
+        &-msg {
+            color: $red;
+            font-size: 12px;
+            margin-left: var(--btn-border-width);
+
+            margin-top: calc(var(--fs-base) * .25);
+
+            opacity: 0;
+            transform: translateY(1rem);
+            pointer-events: none;
+
+            transition: all $fast $bezier;
+        }
+    }
+
+    &--error {
+
+        .input--search {
+            border-color: $red!important;
+            svg { color: $red!important; }
+        }
+
+        .search-wrapper-msg {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;    
+        }
+    }
+}

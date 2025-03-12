@@ -15,6 +15,10 @@ a {
     color: inherit;
 }
 
+img {
+    display: block;
+}
+
 body {
     margin: 0;
 }
@@ -28,16 +32,78 @@ button {
 }
 
 section {
-    padding: var(--sec-p-x) var(--sec-sp-y);
+    padding: var(--sec-p-y) var(--sec-p-x);
 
     &:first-of-type {
-        padding-top: calc(var(--sec-p-x) + (var(--btn-round-size) + (var(--sp-sm) * 2)));
+        padding-top: calc(var(--header-height) + var(--sp-lg));
     }
 }
 
 // Backgorunds
+
 @each $color-name, $hex in $bg-colors {
     .bg-#{"#{$color-name}"} {
         background-color: $hex;
+    }
+}
+
+
+// Fonts
+
+body {
+    font-family: "roc-grotesk", sans-serif;
+    line-height: 1.5;
+
+    font-size: var(--fs-base);
+}
+
+h1 {
+    font-size: var(--fs-h1);
+    font-weight: 400;
+}
+
+h2 {
+    font-size: var(--fs-h2);
+    font-weight: 400;
+}
+
+h3 {
+    font-size: var(--fs-h3);
+    font-weight: 400;
+}
+
+// Inputs
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+    appearance: none;
+    border: none;
+    border-radius: inherit;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    
+    background-color: $white;
+    border-radius: var(--btn-radius);
+    padding: var(--btn-p-x) var(--btn-p-y);
+
+    border: var(--btn-border-width) solid $light;
+
+    transition: all $fast $bezier;
+
+    &:checked, &:has(input:checked), &:focus {
+        border: var(--btn-border-width) solid $primary;
+    }
+}
+
+
+@media (min-width : $bp-lg) {
+    .input {
+        &:hover {
+            border: var(--btn-border-width) solid $primary;
+        }
     }
 }

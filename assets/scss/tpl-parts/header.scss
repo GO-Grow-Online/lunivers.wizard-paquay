@@ -7,12 +7,15 @@
         left: 0;
         width: 100%;
         color: $primary;
+
+
+        z-index: 10;
     } 
 
     &-top {
         top: 0;
 
-        padding: var(--sp-sm) var(--sp-md);
+        padding:  var(--sp-sm) var(--sec-p-x);
         background-color: $white;
 
         display: flex;
@@ -37,7 +40,12 @@
         justify-content: space-between;
         align-items: center;
 
-        padding: var(--sp-md);
+        padding: var(--sec-p-x);
+
+        backdrop-filter: blur(var(--fs-base));
+        background-color: #ffffffa9;
+
+        display: none;
     }
 }
 

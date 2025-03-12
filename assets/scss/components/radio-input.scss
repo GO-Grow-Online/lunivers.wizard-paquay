@@ -1,0 +1,81 @@
+@use "../utils/vars.scss" as *;
+
+
+// Radio wrapper
+
+.input.input--radio {
+    &:has(input[type="radio"]) {
+
+        & + .input.input--radio:has(input[type="radio"]) {
+            margin-top: var(--sp-md);
+        }
+
+        & > span {
+            margin-bottom: calc(var(--fs-base) * -0.25);
+        }
+    }
+
+    &:has(input[type="radio"]:checked) {
+        border: var(--btn-border-width) solid $primary;
+    }
+}
+
+
+// Radio input
+
+.input.input--radio input[type="radio"] {
+
+    margin: 0;
+
+    position: relative;
+    padding: 0;
+    min-width: calc(var(--fs-base) + var(--btn-border-width));
+    max-width: calc(var(--fs-base) + var(--btn-border-width));
+    min-height: calc(var(--fs-base) + var(--btn-border-width));
+    max-height: calc(var(--fs-base) + var(--btn-border-width));
+
+    margin-right: calc(var(--btn-p-x) * .5);
+
+    &::before, &::after {
+        content: "";
+        display: block;
+        width: var(--fs-base);
+        height: var(--fs-base);
+
+        border-radius: $round;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        transition: all $fast $bezier;
+    }
+
+    &::after {
+        border: 1px solid $primary;
+        background-color: $primary;
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    &::before {
+        border: 1px solid $dark;
+        background: url(../svg/icons/check.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60% 60%;
+        z-index: 1;
+    }
+
+    &:checked {
+
+        &::after {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        &::before {
+            border-color: $primary;
+        }
+    }
+}

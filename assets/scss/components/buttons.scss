@@ -3,8 +3,9 @@
 .btn {
 
     border-radius: var(--btn-radius);
-
     padding: var(--btn-p-x) var(--btn-p-y);
+
+    transition: all $fast $bezier;
 
     &-round {
         border-radius: 1000px;
