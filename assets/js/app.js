@@ -1,7 +1,8 @@
 jQuery(function($) {
     search();
     file();
-    kn_pannel();
+    km_pannel();
+    progress_bar($('section.progress'));
 
     function search() {
         $('form.search').on('submit', function(e) {
@@ -29,7 +30,7 @@ jQuery(function($) {
         });
     }
 
-    function kn_pannel(params) {
+    function km_pannel() {
         function animateValue(element, start, end, duration) {
             $({ value: start }).animate({ value: end }, {
                 duration: duration,
@@ -68,8 +69,40 @@ jQuery(function($) {
     
         $('#km_pannel-minus').click(function() {
             let currentKm = parseInt($('[data-annual-km]').attr('data-annual-km'), 10);
-            let newKm = Math.max(5000, currentKm - 5000); // Empêcher de descendre en dessous de 5000
+            let newKm = Math.max(5000, currentKm - 5000);
             updateKmValues(newKm.toString());
         });
     }
+
+    function progress_bar(progress_section) {
+        var progress_value = parseInt(progress_section.attr('data-progress'));
+        $('.progress-bar-fill').on('click', function() {
+            progress_value = progress_value + 8;
+            update_progress_bar(progress_value);
+        });
+
+        $('.progress-bar-checkpoint').on('click', function() {
+            update_progress_bar(parseInt($(this).attr('data-reached')));
+        });
+
+
+        function update_progress_bar(value) {
+            progress_section.attr('data-progress', value);
+            progress_section.find('.progress-bar-fill > span').css('width', value + "%");
+
+            var checkpoints = progress_section.find('.progress-bar-checkpoint');
+
+            checkpoints.each(function(index, element) {
+                var $element = $(element);
+
+                if (value >= parseInt($element.attr('data-reached'))) {
+                    progress_section.find('.reached').addClass('completed');
+                    progress_section.find('.reached').removeClass('reached');
+
+                    $element.addClass('reached');
+                }
+            });
+        }
+    }
+
 });

@@ -6,16 +6,31 @@
 
 .progress {
 
+    position: relative;
     background-color: $primary;
     color: $white;
 
     &-head {
 
+        position: relative;
+
+        h2 {
+            text-align: center;
+        }
+
+        a {
+            position: absolute;
+            left: 0;
+            top: .25rem;
+        }
     }
 
     &-bar {
 
-        & > ul {
+        position: relative;
+        
+        & > ol {
+            margin: var(--sp-md);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -23,11 +38,109 @@
 
         &-checkpoint {
 
+            padding: 0;
+            background-color: transparent;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            // Icon
+            span:first-child {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                width: var(--progress-icon-size);
+                height: var(--progress-icon-size);
+
+                border-radius: $round;
+                color: $primary;
+
+                background-color: $primary;
+                border: 2px solid $light;
+
+                transform: scale(0.5);
+                transition: all $fast $bezier;
+
+                svg {
+                    width: 60%;
+                    height: 60%;
+
+                    transform: scale(.2);
+                    opacity: 0;
+
+                    transition: all $fast $bezier;
+                }
+            }
+
+            // Label
+            span:last-child {
+                margin-top: var(--sp-sm);
+
+                position: absolute;
+                top: calc(100% + var(--sp-sm));
+
+                opacity: .6;
+
+                transition: opacity $fast $bezier;
+            }
+
+            &.completed, &.reached {
+                // Label
+                span:last-child {
+                    opacity: 1;
+                }                
+            }
+
+            &.completed {  
+                // Icon
+                span:first-child {
+                    background-color: $white;
+                }
+            }
+
+            &.reached {
+                transform: scale(1);
+                
+                // Icon
+                span:first-child {
+                    background-color: $white;
+                    border-width: 1px;
+
+                    transform: scale(1);
+                    
+                    svg {
+                        opacity: 1;
+                        transform: inherit;
+                    }
+                }
+            }
         }
 
         &-fill {
+            // Actualised with js
+            width: calc(100% - (var(--sp-md) * 2) - var(--progress-icon-size));
+            
             position: absolute;
+            left: calc(var(--sp-md) + var(--progress-icon-size) * 0.5);
+            top: calc(var(--progress-icon-size) * 0.5 - var(--progress-bar-height) * 0.5);
+            height: calc(var(--progress-bar-height) * 0.5);
 
+            background-color: $light;
+
+            & > span {
+                position: absolute;
+                top: calc(var(--progress-bar-height) * -0.25);
+                left: 0;
+
+                height: var(--progress-bar-height);
+
+                background-color: $white;
+
+                transition: width $fast $bezier
+            }
         }
     }
 }
