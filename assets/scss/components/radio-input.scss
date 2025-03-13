@@ -6,6 +6,8 @@
 .input.input--radio {
     &:has(input[type="radio"]) {
 
+        cursor: pointer;
+
         & + .input.input--radio:has(input[type="radio"]) {
             margin-top: var(--sp-md);
         }
@@ -17,6 +19,7 @@
 
     &:has(input[type="radio"]:checked) {
         border: var(--btn-border-width) solid $primary;
+        cursor: inherit;
     }
 }
 
@@ -35,6 +38,8 @@
     max-height: calc(var(--fs-base) + var(--btn-border-width));
 
     margin-right: calc(var(--btn-p-x) * .5);
+
+    cursor: pointer;
 
     &::before, &::after {
         content: "";

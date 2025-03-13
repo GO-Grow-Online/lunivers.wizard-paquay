@@ -2,7 +2,7 @@ jQuery(function($) {
     search();
     file();
     km_pannel();
-    progress_bar($('section.progress'));
+    progress_bar($('#test-progress'));
 
     function search() {
         $('form.search').on('submit', function(e) {
@@ -87,6 +87,7 @@ jQuery(function($) {
 
 
         function update_progress_bar(value) {
+            value = value >= 100 ? 100 : value;
             progress_section.attr('data-progress', value);
             progress_section.find('.progress-bar-fill > span').css('width', value + "%");
 
@@ -100,6 +101,8 @@ jQuery(function($) {
                     progress_section.find('.reached').removeClass('reached');
 
                     $element.addClass('reached');
+                }else {
+                    $element.removeClass('reached completed');
                 }
             });
         }

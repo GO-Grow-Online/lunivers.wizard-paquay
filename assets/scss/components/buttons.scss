@@ -8,6 +8,7 @@
     transition: all $fast $bezier;
 
     &-round {
+        padding: 0;
         border-radius: 1000px;
 
         width: var(--btn-round-size);
@@ -16,14 +17,29 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        svg {
+            min-width: var(--icon-size-svg);
+            max-width: var(--icon-size-svg);
+            min-height: var(--icon-size-svg);
+            max-height: var(--icon-size-svg);
+        }
     }
 
     &-primary {
         background-color: $primary;
         color: $white;
+
+        &:hover {
+            
+        }
     }
 
     &-light{
         background-color: $light;
+    }
+
+    &:active {
+        transform: scale(.8);
     }
 }

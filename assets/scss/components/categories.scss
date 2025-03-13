@@ -3,9 +3,10 @@
 .categories {
     position: relative;
     overflow: hidden;
-    width: 100vw;
+    max-width: 100vw;
     
-    padding: 0;
+    padding-left: 0!important;
+    padding-right: 0!important;
 
     h1 {
         margin-left: var(--sp-md);
@@ -43,17 +44,29 @@
 
         &-item {
 
+            pointer-events: none;
             scroll-snap-align: center;
 
             display: flex;
             
             width: 85vw;
-            aspect-ratio: 10/ 7;
+            aspect-ratio: 10/ 8;
 
-            &:first-child a { margin-left: var(--sp-md); }
-            &:last-child a { margin-right: var(--sp-md); }
+            &:first-child label { margin-left: var(--sp-md); }
+            &:last-child label { margin-right: var(--sp-md); }
 
-            a {
+            .input {
+                pointer-events: all;
+                cursor: pointer;
+
+                &:has(input:checked) {
+                    cursor: inherit;
+                }
+
+                // Reset some of the .input styles
+                background-color: transparent!important;
+                border: none!important;
+
                 position: relative;
                 overflow: hidden;
 
@@ -88,6 +101,25 @@
                     z-index: -2;
                 }
 
+                input[type="radio"] {
+                    &::before {
+                        border-color: $white!important;
+                        background-size: 0%!important;
+                        transform: rotate(200deg);
+                    }
+
+                    &::after {
+                        content: none!important;
+                    }
+
+                    &:checked {
+                        &::before {
+                            background-size: 60%!important;
+                            transform: rotate(0deg);
+                        }
+                    }
+                }
+
                 &::before, &::after {
                     content: "";
                     position: absolute;
@@ -114,6 +146,39 @@
                 }
             }
         }
-
     }
+}
+
+@media (min-width : $bp-md) {
+    .categories-list {
+        padding-left: var(--sec-p-x);
+        padding-right: var(--sec-p-x);
+    }
+}
+
+
+@media (min-width : $bp-lg) {
+    .categories {
+        &-list {
+            
+            width: calc(100% - var(--sp-lg));
+            padding-left: var(--sec-p-x);
+            padding-right: var(--sec-p-x);
+            overflow: visible;
+            
+            display: grid;
+            gap: var(--sp-lg);
+            grid-template-rows: 1fr;
+            grid-template-columns: repeat(3, 33%);
+
+            &-item {
+                width: 100%;    
+
+                .input.input--radio {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    
 }

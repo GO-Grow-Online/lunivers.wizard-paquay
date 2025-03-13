@@ -32,16 +32,34 @@ button {
 }
 
 section {
-    padding: var(--sec-p-y) var(--sec-p-x);
 
-    &:first-of-type {
-        padding-top: var(--header-height);
+    & > .wrapper {
+        padding: var(--sec-p-y) var(--sec-p-x);
     }
 
-    &.progress:first-child {
-        padding-top: calc(var(--header-height) + var(--sec-p-y));
+    &:first-of-type > .wrapper {
+        padding-top: var(--header-top-height);
+    }
+
+    &.progress:first-child > .wrapper {
+        padding-top: calc(var(--header-top-height) + var(--sec-p-y));
+    }
+
+    & > .wrapper.progress + .wrapper.imgWrapper {
+        background: linear-gradient(to bottom, $primary 0%, $primary 20%, transparent 20%, transparent 100%);
+    }
+
+    & > .wrapper + .wrapper {
+        padding-top: 0;
     }
 }
+
+section:has(h2 + .input) h2 {
+    text-align: center;
+    margin-bottom: calc(var(--sec-p-y) * 0.5);
+}
+
+
 
 // Backgorunds
 
@@ -76,7 +94,16 @@ h3 {
     font-weight: 400;
 }
 
+svg {
+    width: var(--icon-size-svg);
+    height: var(--icon-size-svg);
+}
+
 // Inputs
+
+input, button, a {
+    cursor: pointer;
+}
 
 input {
     font-family: inherit;
@@ -98,8 +125,52 @@ input {
 
     transition: all $fast $bezier;
 
-    &:checked, &:has(input:checked), &:focus {
+    &:checked, &:has(input:checked), &:focus, &:has(input:focus) {
         border: var(--btn-border-width) solid $primary;
+    }
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+
+    z-index: 10;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: var(--sp-lg);
+
+    backdrop-filter: blur(var(--fs-base));
+    background-color: #ffffffa9;
+
+    .btn svg {
+        display: none;
+    }
+}
+
+.imgWrapper {
+
+    &:has(h2) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        h2 {
+            position: absolute;
+            z-index: 1;
+            color: $white;
+
+            font-size: 100px;
+            font-weight: 500;
+        }
+    }
+
+    img {
+        width: 100%;
+        border-radius: var(--btn-radius);
     }
 }
 
@@ -109,5 +180,58 @@ input {
         &:hover {
             border: var(--btn-border-width) solid $primary;
         }
+    }
+
+    .nav {
+        position: relative;
+        padding-left: var(--sec-p-x);
+        padding-right: var(--sec-p-x);
+
+        .btn  {
+
+            position: relative;
+
+            svg {
+                display: block;
+                position: absolute;
+                margin-top: -.25rem;
+
+                opacity: 0;
+
+                transition: all $fast $bezier;
+            }
+
+            &:hover svg {
+                opacity: 1;
+                transform: translateX(0)!important;
+            }
+
+            &:first-child {
+                svg { 
+                    left: var(--btn-p-x); 
+                    transform: translateX(calc(var(--btn-p-x) * -1)); 
+                }
+
+                &:hover {
+                    padding-left: calc(var(--btn-p-x) + var(--icon-size-svg) * 1.5);
+                }
+            }
+
+            &:last-child {
+                svg { 
+                    right: var(--btn-p-x);
+                    transform: translateX(var(--btn-p-x)); 
+                }
+
+                &:hover {
+                    padding-right: calc(var(--btn-p-x) + var(--icon-size-svg) * 1.5);
+                }
+            }
+        }
+    }
+
+    section:has(h2 + .input) h2 {
+        font-size: var(--fs-h1);
+        font-weight: 500;   
     }
 }

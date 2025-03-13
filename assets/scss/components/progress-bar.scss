@@ -31,6 +31,8 @@
         
         & > ol {
             margin: var(--sp-md);
+            margin-bottom: calc(var(--sp-md) + var(--fs-base) + var(--sp-sm));
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -134,6 +136,7 @@
                 position: absolute;
                 top: calc(var(--progress-bar-height) * -0.25);
                 left: 0;
+                max-width: 100%;
 
                 height: var(--progress-bar-height);
 

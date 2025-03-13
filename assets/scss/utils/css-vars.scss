@@ -2,6 +2,7 @@
 
 :root {
     --icon-size : 2rem;
+    --icon-size-svg : 1rem;
     --people-pic : 5rem;
     --people-pic-big : 7rem;
 
@@ -25,16 +26,45 @@
 
     --radius : 15px;
 
-    --header-height : 64px;
+    --header-top-height : 64px;
+    --header-bottom-height : 103px;
 
     --progress-icon-size : 40px;
     --progress-bar-height : 3px;
 }
 
 @media (min-width : $bp-md) {
-
+    :root {
+        --sec-p-x : 10vw;
+        --sec-p-y : 5rem;
+    
+        --btn-radius : 10px;
+    }
 }
 
 @media (min-width : $bp-lg) {
-    
+    :root {
+        --sp-sm : 0.75rem;
+        --sp-md : 1.25rem;
+        --sp-lg : 2rem;
+        
+        --sec-p-x : 15vw;
+        // --sec-p-y : 5rem;
+
+        --btn-p-x : 1.6rem;
+        --btn-p-y : 1.4rem;
+
+        --icon-size : 2.2rem;
+        --icon-size-svg : 1.2rem; 
+        
+        --header-top-height : 93px;
+
+        --fs-h1 : 23px;
+    }
+}
+
+@media (min-width : $bp-xl) {
+    :root {
+        --sec-p-x : 25vw;
+    }
 }
