@@ -6,26 +6,44 @@
 .km_pannel {
 
     text-align: center;
-
-    &-selector, &-body {
-        padding: var(--sp-md);
-    }
+    display: block;
 
     &-selector {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
+        p {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
         &-value {
             font-size: 25px;
+            font-weight: 500;
+            margin-bottom: -2rem;
+        }
+
+        .btn:active {
+            transform: scale(.8);
         }
     }
 
     &-body {
+        padding-top: var(--sp-md);
+        margin-top: var(--sp-md);
+
         text-align: center;
+        border-top: var(--btn-border-width) solid $light;
 
         p {
             margin: 0;
+        }
+
+        &-value {
+            font-size: var(--fs-h2);
+            font-weight: 500;
         }
     }
 

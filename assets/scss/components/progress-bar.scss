@@ -1,0 +1,33 @@
+@use "../utils/vars.scss" as *;
+
+// Progress bar
+
+// .progress is a <section>
+
+.progress {
+
+    background-color: $primary;
+    color: $white;
+
+    &-head {
+
+    }
+
+    &-bar {
+
+        & > ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &-checkpoint {
+
+        }
+
+        &-fill {
+            position: absolute;
+
+        }
+    }
+}

@@ -10,7 +10,7 @@
     h1 {
         margin-left: var(--sp-md);
         margin-right: var(--sp-md);
-        margin-top: var(--sp-lg);
+        margin-top: calc(var(--sp-lg) * 1.5);
         margin-bottom: calc(var(--sp-lg) * 1.5);
         text-align: center;
         color: $white;
