@@ -1,0 +1,33 @@
+@use "../utils/vars.scss" as *;
+
+
+// File number
+
+.input--number {
+
+    appearance: none;
+    position: relative;
+
+    .btn {
+        position: absolute;
+        top: calc(50% - var(--btn-round-size-sm) * 0.5);
+
+        svg { color: $dark; }
+    }
+
+    &-minus {
+        right: calc(var(--btn-round-size-sm) * 2);
+    }
+
+    &-plus {
+        right: calc(var(--btn-round-size-sm) * 0.5);
+    }
+
+    &:hover, &:focus, &:has(input:hover), &:has(input:focus) {
+        .btn-light {
+            background-color: $primary;
+
+            svg { color: $white; }
+        }
+    }
+}

@@ -8,10 +8,6 @@
 
         cursor: pointer;
 
-        & + .input.input--radio:has(input[type="radio"]) {
-            margin-top: var(--sp-md);
-        }
-
         & > span {
             margin-bottom: calc(var(--fs-base) * -0.25);
         }

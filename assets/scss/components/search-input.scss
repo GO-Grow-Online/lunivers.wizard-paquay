@@ -27,25 +27,38 @@
 
     &-results {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: var(--sp-md);
 
-        overflow-x: scroll;
-        scroll-snap-type: x mandatory;
+        padding: var(--sp-sm);
+        border-radius: var(--btn-radius);
+        background-color: $white;
+
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
 
         margin-left: calc(var(--sec-p-x) * -1);
-        padding-right: var(--sec-p-x);
-        padding-left: var(--sec-p-x);
-        width: 100vw;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+
+        max-height: 300px;
 
         &-item {
             scroll-snap-align: center;
-
             display: block;
-            width: 33vw;
-            height: 33vw;
-            aspect-ratio: 1/1;
-            background-color: $secondary;
+
+            a, button {
+                width: 100%;
+                text-align: left;
+                transition: all $fast $bezier;
+            }
+
+            &:has(a, button):hover {
+                a, button {
+                    opacity: .25;
+                }
+            }
         }
     }
 

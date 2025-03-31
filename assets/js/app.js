@@ -1,8 +1,30 @@
 jQuery(function($) {
     search();
     file();
+    number();
     km_pannel();
     progress_bar($('#test-progress'));
+
+
+    function number() {
+        $('.input--number').on('click', 'button', function (e) {
+            e.preventDefault();
+
+            var $input = $(this).siblings('input[type="number"]');
+
+            // Base decrement/increment on input's attributes
+            var step = parseFloat($input.attr('step')) || 1;
+            var min = parseFloat($input.attr('min')) || -Infinity;
+            var max = parseFloat($input.attr('max')) || Infinity;
+            let val = parseFloat($input.val()) || 0;
+    
+            // Check if clicked button is plus or minus
+            val += $(this).hasClass('input--number-plus') ? step : -step;
+            val = Math.min(Math.max(val, min), max);
+    
+            $input.val(val).trigger('change');
+        });
+    }
 
     function search() {
         $('form.search').on('submit', function(e) {

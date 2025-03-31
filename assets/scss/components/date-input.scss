@@ -1,0 +1,35 @@
+@use "../utils/vars.scss" as *;
+
+
+// File date
+
+.input.input--date {
+
+    appearance: none;
+
+    position: relative;
+
+    &::after {
+        content: "";
+        display: block;
+        height: var(--btn-round-size-sm);
+
+        aspect-ratio: 1 / 1;
+        border-radius: $round;
+
+        position: absolute;
+        right: calc(var(--btn-round-size-sm) * 0.5);
+        top: calc(50% - var(--btn-round-size-sm) * 0.5);
+
+        transition: all $fast $bezier;
+
+        pointer-events: none;
+
+        background: url(../svg/icons/calendar.svg), $primary;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: var(--icon-size-svg) var(--icon-size-svg);
+        z-index: 1;
+    }
+
+}

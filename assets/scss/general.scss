@@ -87,6 +87,7 @@ h1 {
 h2 {
     font-size: var(--fs-h2);
     font-weight: 400;
+    width: 100%;
 }
 
 h3 {
@@ -111,11 +112,14 @@ input {
     appearance: none;
     border: none;
     border-radius: inherit;
+    outline: none;
 }
 
 .input {
     display: flex;
     align-items: center;
+
+    cursor: pointer;
     
     background-color: $white;
     border-radius: var(--btn-radius);
@@ -125,8 +129,32 @@ input {
 
     transition: all $fast $bezier;
 
+    input { outline: none; width: 100%; }
+
+    & + .input {
+        margin-top: var(--sp-md);
+    }
+    
     &:checked, &:has(input:checked), &:focus, &:has(input:focus) {
         border: var(--btn-border-width) solid $primary;
+        cursor: initial;
+    }
+}
+
+// Input sizes
+.wrapper:has(.input--33, .input--50) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-md);
+
+
+    .input {
+        margin-top: 0;
+        width: 100%;
+
+        &--50 { 
+            width: calc(50% - (var(--sp-md) * 0.5));
+        }
     }
 }
 
@@ -179,6 +207,13 @@ input {
     .input {
         &:hover {
             border: var(--btn-border-width) solid $primary;
+        }
+    }
+
+    // Input sizes
+    .wrapper:has(.input--33, .input--50) {
+        .input--33 { 
+            width: calc(33.33% - (var(--sp-md) * 0.6666));
         }
     }
 

@@ -24,6 +24,11 @@
             min-height: var(--icon-size-svg);
             max-height: var(--icon-size-svg);
         }
+
+        &--sm {
+            width: var(--btn-round-size-sm);
+            height: var(--btn-round-size-sm);
+        }
     }
 
     &-primary {
