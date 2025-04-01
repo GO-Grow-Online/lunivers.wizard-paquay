@@ -32,4 +32,9 @@
         z-index: 1;
     }
 
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        transform: scale(1.5);
+        margin-left: 5px;
+        cursor: pointer;
+    }
 }
