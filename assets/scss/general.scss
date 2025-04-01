@@ -137,6 +137,7 @@ input {
         
         height: 100%;
         background-color: transparent;   
+        margin-bottom: -2px;
     }
 
     & + .input {
@@ -162,7 +163,6 @@ input {
         input {
             width: 100%;
             outline: none!important;
-            margin-bottom: -2px;
         }
 
         &:has(input:focus) svg {
