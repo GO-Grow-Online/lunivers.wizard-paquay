@@ -119,6 +119,8 @@ input {
     display: flex;
     align-items: center;
 
+    width: 100%;
+
     cursor: pointer;
     
     background-color: $white;
@@ -139,6 +141,33 @@ input {
         border: var(--btn-border-width) solid $primary;
         cursor: initial;
     }
+
+
+    &--icon {
+
+        gap: calc(var(--btn-p-x) * 0.5);
+
+        & > span:has(>svg) {
+            display: flex;
+            
+            svg { transition: color $fast $bezier; }
+        }
+        
+        input {
+            width: 100%;
+            outline: none!important;
+            margin-bottom: -2px;
+        }
+
+        &:has(input:focus) svg {
+            color: $primary;
+        }
+    }
+
+    &:has(input:user-invalid), &--invalid {
+        border-color: $red!important;
+        svg { color: $red!important; }
+    }
 }
 
 // Input sizes
@@ -147,10 +176,8 @@ input {
     flex-wrap: wrap;
     gap: var(--sp-md);
 
-
     .input {
         margin-top: 0;
-        width: 100%;
 
         &--50 { 
             width: calc(50% - (var(--sp-md) * 0.5));

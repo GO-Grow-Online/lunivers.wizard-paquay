@@ -11,18 +11,6 @@
 
     .input--search {
 
-        gap: calc(var(--btn-p-x) * 0.5);
-
-        svg { transition: color $fast $bezier; }
-
-        input {
-            width: 100%;
-            outline: none!important;
-        }
-
-        &:has(input:focus) svg {
-            color: $primary;
-        }
     }
 
     &-results {
