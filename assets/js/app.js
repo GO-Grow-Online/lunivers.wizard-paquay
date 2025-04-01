@@ -5,7 +5,6 @@ jQuery(function($) {
     km_pannel();
     progress_bar($('#test-progress'));
 
-
     function number() {
         $('.input--number').on('click', 'button', function (e) {
             e.preventDefault();
